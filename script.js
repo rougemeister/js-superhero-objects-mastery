@@ -32,5 +32,41 @@ superhero.revealIdentity = function(){
     console.log(this.secretIdentity)
 }
 
+
+superhero.usePower('darts')
 superhero.usePower('super-speed')
 superhero.revealIdentity()
+
+
+/*****************************************************
+ **** Task 3: Create a Superhero constructor      ****
+      function to streamline the creation of
+ **** multiple superheroes.                       ****
+ *****************************************************/
+
+ // Constructor function for creating superhero objects
+function Superhero(name, secretIdentity, powers, weakness) {
+    this.name = name;
+    this.secretIdentity = secretIdentity;
+    this.powers = powers;
+    this.weakness = weakness;
+}
+
+Superhero.prototype.usePower = function(powerName) {
+    if (this.powers.includes(powerName)) {
+        console.log(`${this.name} uses ${powerName}!`);
+    } else {
+        console.log(`${this.name} does not have the power: ${powerName}`);
+    }
+};
+
+Superhero.prototype.revealIdentity = function() {
+    console.log(`The secret identity of ${this.name} is ${this.secretIdentity}.`);
+};
+
+
+let batman = new Superhero("Batman", "Bruce Wayne", ["martial arts", "detective skills"], "none");
+
+batman.usePower('heat vision')
+batman.usePower("martial arts");
+batman.revealIdentity();

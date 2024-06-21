@@ -52,6 +52,7 @@ function Superhero(name, secretIdentity, powers, weakness) {
     this.weakness = weakness;
 }
 
+
 Superhero.prototype.usePower = function(powerName) {
     if (this.powers.includes(powerName)) {
         console.log(`${this.name} uses ${powerName}!`);
@@ -70,3 +71,28 @@ let batman = new Superhero("Batman", "Bruce Wayne", ["martial arts", "detective 
 batman.usePower('heat vision')
 batman.usePower("martial arts");
 batman.revealIdentity();
+
+
+
+
+/*****************************************************
+ **** Extend the functionality of your superheroes
+      using prototypal inheritance                ****
+ *****************************************************/
+
+// Creating a subclass for a SuperVillain
+function SuperVillain(name, secretIdentity, powers, weakness) {
+    Superhero.call(this, name, secretIdentity, powers, weakness);
+}
+
+// Inheriting from Superhero
+SuperVillain.prototype = Object.create(Superhero.prototype);
+SuperVillain.prototype.constructor = SuperVillain;
+
+
+
+
+let darkseid = new SuperVillain("Darkseid", "None", ["Telepathy", "Telekenesis", 'heat vision'], "Radion");
+darkseid.usePower('heat vision')
+darkseid.usePower("Telekenesis");
+darkseid.revealIdentity();
